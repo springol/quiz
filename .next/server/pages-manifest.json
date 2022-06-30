@@ -1,10 +1,7 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/": "pages/index.html",
-  "/newQuestion": "pages/newQuestion.html",
-  "/allQuestions": "pages/allQuestions.js",
-  "/edit/[id]": "pages/edit/[id].js",
   "/_document": "pages/_document.js",
-  "/404": "pages/404.html"
+  "/newQuestion": "pages/newQuestion.js",
+  "/allQuestions": "pages/allQuestions.js"
 }
