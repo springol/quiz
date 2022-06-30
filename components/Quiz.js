@@ -2,6 +2,9 @@ import { useEffect, useState } from "react"
 import QuestionAPI from "../lib/Question";
 
 import styles from "./Quiz.module.css"
+import { router } from "next/router";
+import Link from "next/link";
+
 
 const answeredQuestions = []
 export default function Quiz(){
@@ -58,6 +61,15 @@ export default function Quiz(){
      setRound(round + 1)
      setSolved(false)
     
+    }
+
+    const handleReload = (e) =>{
+        e.preventDefault()
+        try{
+            router.push("/")
+        }catch{
+            console.log("Weiterleitung fehlgeschlagen")
+        }
     }
 
 
@@ -143,6 +155,7 @@ export default function Quiz(){
         <div>
         <p>Quiz fertig</p>
         <p>Du hast  {points} {points == 1 ? "Punkt" : "Punkte"} geholt</p>
+        <button class="btn-primary" onClick={handleReload} >Zurück</button>
 
         </div>
         
