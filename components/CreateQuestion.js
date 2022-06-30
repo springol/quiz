@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import QuestionAPI from "../lib/Question"
 import styles from "./CreateQuestion.module.css"
+import { router } from "next/router";
+import Link from "next/link";
 
 
 
@@ -42,15 +44,24 @@ export default function CreateFunction({givenQuestion}) {
 
 
         }
+    }else{
+        try{
+            QuestionAPI.update(question)
+            console.log("Frage geupdated")
+            
+        }catch{
+            console.log("Update fehlgeschlagen")
+        }
+        
     }
+
+    router.push("/allQuestions")
 
     }
 
 
     return (
         <div>
-
-        <h1>Frage erfassen</h1>
 
         <form>
         <div>
@@ -63,7 +74,6 @@ export default function CreateFunction({givenQuestion}) {
         <input onChange={handleChange} type="text" value={question ? question.rightAnswer : ""} name="rightAnswer" />
         </div>
         
-
         <div>
         <p>Falsche Antwort 1:</p>
         <input onChange={handleChange} type="text" value={question ? question.wrongAnswer1 : ""} name="wrongAnswer1"  />
@@ -81,17 +91,13 @@ export default function CreateFunction({givenQuestion}) {
         <input onChange={handleChange} type="text" value={question ? question.wrongAnswer3 : ""} name="wrongAnswer3" />
         </div>
 
-        <button onClick={handleSubmit} >Frage absenden</button>
-        
-        
+        <button class="btn-primary" onClick={handleSubmit} >Frage absenden</button>
+        <Link  href={`/allQuestions`}><button class="btn-danger" >Abbrechen</button></Link>
+  
+
         </form>
 
-
         </div>
-
-
-
-
 
     )
 

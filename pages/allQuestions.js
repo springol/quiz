@@ -9,8 +9,8 @@ export default function AllQuestionsPage({questions}){
     return questions && (
 
 
-        <div>
-        <h1>Alle Fragen</h1>
+        <div class="container">
+          <h1>Alle Fragen</h1>
 
         <ShowQuestions questions={questions}></ShowQuestions>
 

@@ -1,9 +1,12 @@
 import QuestionAPI from "../lib/Question";
 import { router } from "next/router";
 import Link from "next/link";
+import { useState } from "react";
 
 
 export default function ShowQuestions({questions}){
+
+    const [deleted, setDeleted] = useState("")
 
 
 
@@ -11,7 +14,14 @@ export default function ShowQuestions({questions}){
         e.preventDefault();
         console.log(e.target.name)
 
-        let id = e.target.name
+        let id = e.target.name.toString()
+        console.log("id: " + id)
+
+        QuestionAPI.delete(id)
+        //neu rendern mit aufruf des UseState
+        setDeleted(true)
+
+        router.push("/allQuestions")
 
         
 
@@ -41,7 +51,7 @@ export default function ShowQuestions({questions}){
     
     <div>
 
-    <table>
+    <table class="table  table-striped table-success table-hover">
     <thead>
             <tr>
                 <th>Frage</th>
@@ -63,8 +73,8 @@ export default function ShowQuestions({questions}){
                 <td>{question.wrongAnswer1}</td>
                 <td>{question.wrongAnswer2}</td>
                 <td>{question.wrongAnswer3}</td>
-                <td><button onClick={handleUpdate} name={question.id}>Ändern</button></td>
-                <td> <Link  href={`/edit/${question.id}`}><button onClick={handleDelete} name={question.id}>Löschen</button></Link></td>
+                <td><button class="btn-primary" onClick={handleUpdate} name={question.id}>Ändern</button></td>
+                <td> <Link  href={`/edit/${question.id}`}><button class="btn-danger" onClick={handleDelete} name={question.id}>Löschen</button></Link></td>
 
                 </tr>
             )
@@ -72,9 +82,6 @@ export default function ShowQuestions({questions}){
         })
        }</tbody>
 </table>
-        
-        <h1>Alle Fragen</h1>
-    
         
         </div>
     )

@@ -8,7 +8,7 @@ export default function editQuestionPage({question}){
 
     return question && (
 
-        <div>
+        <div class="container">
 
         <h1>Frage bearbeiten</h1>
         <CreateQuestion givenQuestion={question}></CreateQuestion>
