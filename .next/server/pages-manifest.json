@@ -4,7 +4,7 @@
   "/": "pages/index.html",
   "/newQuestion": "pages/newQuestion.html",
   "/allQuestions": "pages/allQuestions.js",
-  "/_document": "pages/_document.js",
   "/edit/[id]": "pages/edit/[id].js",
+  "/_document": "pages/_document.js",
   "/404": "pages/404.html"
 }

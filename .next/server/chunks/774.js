@@ -48,8 +48,6 @@ const getJSON = createFetchFunction("GET");
 const putJSON = createFetchFunction("PUT");
 const postJSON = createFetchFunction("POST");
 const deleteJSON = createFetchFunction("DELETE");
-const BASE_URL = "http://172.16.2.143:8080" //export const BASE_URL = "http://localhost:8080"
-;
 
 ;// CONCATENATED MODULE: ./lib/Question.js
 

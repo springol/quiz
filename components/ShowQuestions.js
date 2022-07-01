@@ -14,6 +14,13 @@ export default function ShowQuestions({questions}){
         e.preventDefault();
         console.log(e.target.name)
 
+        let pw = prompt("Passwort zum Löschen");
+
+
+        if (pw != "sml12345") {
+          return
+        } 
+
         let id = e.target.name.toString()
         console.log("id: " + id)
 

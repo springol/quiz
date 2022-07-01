@@ -39,6 +39,10 @@ function ShowQuestions({ questions  }) {
     const handleDelete = (e)=>{
         e.preventDefault();
         console.log(e.target.name);
+        let pw = prompt("Passwort zum L\xf6schen");
+        if (pw != "sml12345") {
+            return;
+        }
         let id = e.target.name.toString();
         console.log("id: " + id);
         Question/* default.delete */.Z["delete"](id);
