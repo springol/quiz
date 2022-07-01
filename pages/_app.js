@@ -13,5 +13,5 @@ export default function App({ Component, pageProps}){
             <Component {...pageProps} />
             </Layout><link rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
         </div>
-    )
+    )  
 }
