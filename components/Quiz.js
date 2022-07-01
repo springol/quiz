@@ -177,7 +177,7 @@ export default function Quiz(){
         {points < 2 ? (
             <h3>Deine Leistung lässt schon etwas zu wünschen übrig</h3>
         ) : points < 4 ? (
-            <h3>Gar nicht so schlecht</h3>
+            <h3>Gar nicht so schlecht, aber gut ist anders</h3>
 
         ) : points < 5 ? 
         (
