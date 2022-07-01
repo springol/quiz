@@ -20,6 +20,7 @@ export default function Quiz(){
     const [points, setPoints] = useState(0)
     const [solved, setSolved] = useState(false)
     const [feedback, setFeedback] = useState("")
+    const [count, setCount] = useState(0)
 
 
 
@@ -108,53 +109,83 @@ export default function Quiz(){
       useEffect(()=>{
 
       }, [solved, feedback])
+
+      
       
 
 
 
     return round == 0 ?  (
         <>
-                        <button onClick={getNextQuestion}>Start Quiz</button>
+        <div className={styles.center}>
+                    <h1>Spiele das Quiz</h1> 
+                        <button class="btn-primary" onClick={getNextQuestion}>Start Quiz</button>
+
+                        </div>
 
         </>
     ) : round <= 5 ?  (
         <div>
             <h1>Quizfrage {round}/5</h1>
             <p>Punkte {points}</p>
-            <h2>{question}</h2>
+            <div className={styles.center}>
+                 <h2 className={styles.center}>{question}</h2>
+            </div>
+            
+           
 
+            <div className={styles.gridContainer}>
+           
             {answers.map(answer => {
+     
+            
                return !solved ? 
                   (   
-                        <button key={answer} value={answer} onClick={checkAnswer}>{answer}</button>
+                        <button className={styles.gridItem} key={answer} value={answer} onClick={checkAnswer}>{answer}</button>
+           
+                  
                     
                 ) : (
-                    <button disabled key={answer} value={answer} className={solution == answer ? styles.green : styles.red }>{answer}</button>
+                    <button disabled key={answer} value={answer} className={[styles.gridItem, solution == answer ? styles.green : styles.red].join(" ")}>{answer}</button>
                 )
+
+               
+                
 
                 }
             )
 
-            }
-            
+            }</div>
 
-
+            <div className={styles.center}>
 
             <br></br> 
-            <p>{feedback}</p>          
+            <h3>{feedback}</h3>          
 
-            {round == 5 ? <button onClick={() => setRound(round + 1)}>Zur Auswertung</button> : <button disabled={!solved} onClick={getNextQuestion}>Nächste Frage</button>  }
+            {round == 5 ? <button class="btn-primary" onClick={() => setRound(round + 1)}>Zur Auswertung</button> : <button class="btn-primary" disabled={!solved} onClick={getNextQuestion}>Nächste Frage</button>  }
             
-
+</div>
 
 
 
         
         </div>
     ) : (
-        <div>
-        <p>Quiz fertig</p>
-        <p>Du hast  {points} {points == 1 ? "Punkt" : "Punkte"} geholt</p>
+        <div className={styles.center}>
+        <h1>Quiz fertig</h1>
+        <h2>Du hast  {points} {points == 1 ? "Punkt" : "Punkte"} geholt</h2>
+        {points < 2 ? (
+            <h3>Deine Leistung lässt schon etwas zu wünschen übrig</h3>
+        ) : points < 4 ? (
+            <h3>Gar nicht so schlecht</h3>
+
+        ) : points < 5 ? 
+        (
+            <h3>Das war ziemlich gut</h3>
+        ) : 
+        (
+            <h3>Bravo, du hast alles richtig!</h3>
+        )}
         <button class="btn-primary" onClick={handleReload} >Zurück</button>
 
         </div>
