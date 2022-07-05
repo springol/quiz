@@ -21,6 +21,7 @@ export default function Quiz(){
     const [solved, setSolved] = useState(false)
     const [feedback, setFeedback] = useState("")
     const [count, setCount] = useState(0)
+    const [chosen, setChosen] = useState("")
 
 
 
@@ -65,12 +66,8 @@ export default function Quiz(){
     }
 
     const handleReload = (e) =>{
-        e.preventDefault()
-        try{
-            router.push("/")
-        }catch{
-            console.log("Weiterleitung fehlgeschlagen")
-        }
+
+        window.location.reload();
     }
 
 
@@ -91,6 +88,7 @@ export default function Quiz(){
         
 
         setSolved(true)
+        setChosen(chosen)
 
 
     } 
@@ -146,7 +144,7 @@ export default function Quiz(){
                   
                     
                 ) : (
-                    <button disabled key={answer} value={answer} className={[styles.gridItem, solution == answer ? styles.green : styles.red].join(" ")}>{answer}</button>
+                    <button disabled key={answer} value={answer} className={[styles.gridItem, solution == answer && chosen == answer ? styles.darkGreen : solution == answer ? styles.green : chosen == answer ? styles.darkRed : styles.red].join(" ")}>{answer}</button>
                 )
 
                
@@ -186,7 +184,7 @@ export default function Quiz(){
         (
             <h3>Bravo, du hast alles richtig!</h3>
         )}
-        <button class="btn-primary" onClick={handleReload} >Zurück</button>
+        <button class="btn-primary" onClick={handleReload} >Noch ne Runde</button>
 
         </div>
         
