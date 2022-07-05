@@ -1,6 +1,5 @@
-import Quiz from "../components/quiz"
+import Quiz from "../components/Quiz"
 import styles from "./index.module.css"
-
 
 
 
