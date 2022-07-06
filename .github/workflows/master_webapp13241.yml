@@ -54,3 +54,13 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2927A5687549482DB68041EF8F3AB8FD }}
           package: .
+
+
+  zap_scan:
+    runs-on: ubuntu-latest
+    steps:
+       - name: ZAP Scan
+         uses: zaproxy/action-full-scan@v0.4.0
+         with:
+           target: 'https://webapp13241.azurewebsites.net'
+
